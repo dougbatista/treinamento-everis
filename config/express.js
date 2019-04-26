@@ -7,11 +7,14 @@ require('dotenv').config();
 require('../config/db');
 
 module.exports = () => {
+    
     app.use(cors());
     app.use(bodyParser.json());
 
-    app.use('/api', require('../core/auth/auth.route'));
+    //app.use('/api', require('../core/auth/auth.route'));
     app.use('/api', require('../core/user/user.routes'));
+    app.use('/api', require('../core/propertie/propertie.routes'));
+
     
     return app;
 }

@@ -13,13 +13,14 @@ const createUserDAO = async (body) => {
             city: body.city,
             numebr: body.number,
             neighborhood: body.neighborhood,
-            street: body.street
+            street: body.street,
+            about: body.propertie_id
         }
     });
-    return await newUser.save();
+    return newUser.save();
 }
 const readUserDAO = async (id) => {
-    return await User.findOne({"_id": id});
+    return await User.findOne({"_id": id}).populate('address.about').exec();
 }
 const updateUserDAO = async (id, body) => {
     return await User.findByIdAndUpdate(id, body)

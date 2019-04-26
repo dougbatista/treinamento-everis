@@ -11,8 +11,9 @@ const userSchema = new Schema({
         city: String,
         number: Number,
         neighborhood: String,
-        street: String
-    }
+        street: String,
+        about: { type: Schema.Types.ObjectId, ref: 'Propertie' }
+    },
 });
 
 module.exports = mongoose.model('User', userSchema);
